@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Сервис комментариев со спам фильтром</h1>
+      <h2>Оставьте ваш комментарий</h2>
+      <form class="comments">
+        <label for="name">Введите <b>ваше ФИО:</b></label>
+        <input type="text" id="name" name="name" size="80" />
+        <label for="avatar">Введите ссылку <b>вашего аватара:</b></label>
+        <input type="url" size="80" id="avatar" name="avatar" />
+        <label for="message">Оставьте комментарий:</label>
+        <textarea id="message" name="message" cols="100" rows="15"></textarea>
+        <label for="checkbox">Показывать ваше имя?</label>
+        Да<input type="checkbox" id="checkbox" name="checkbox" /> Нет<input
+          type="checkbox"
+          id="checkbox"
+          name="checkbox"
+        />
+      </form>
+      <button type="button" onclick="addComment()" id="submitMessage">
+        ОТПРАВИТЬ
+      </button>
+      <div id="comments-container"></div>
+    </div>
+    <script src="./assets/index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+.container {
+    margin: 40px 50px;
+}
+
+.comments {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+}
+
+input {
+    margin: 15px 0 15px;
+}
+
+textarea {
+    margin: 15px 0 15px;
+}
