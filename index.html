@@ -19,13 +19,13 @@
         <label for="message">Оставьте комментарий:</label>
         <textarea id="message" name="message" cols="100" rows="15"></textarea>
         <label for="checkbox">Показывать ваше имя?</label>
-        Да<input type="checkbox" id="checkbox" name="checkbox" /> Нет<input
+        Да<input type="checkbox" id="checkboxYes" name="checkbox" /> Нет<input
           type="checkbox"
-          id="checkbox"
+          id="checkboxNo"
           name="checkbox"
         />
       </form>
-      <button type="button" onclick="addComment()" id="submitMessage">
+      <button type="button" id="submitMessage">
         ОТПРАВИТЬ
       </button>
       <div id="comments-container"></div>

@@ -1,6 +1,7 @@
 const nameInput = document.getElementById('name');
 const submitButton = document.getElementById('submitMessage');
-submitButton.addEventListener('click', addComment);
+const el = document.getElementById('checkboxYes');
+console.log(el);
 
 function transformName(name) {
   const trimmedName = name.trim().replace(/\s+/g, ' ');
@@ -17,63 +18,68 @@ nameInput.addEventListener('input', function(event) {
 const messageInput = document.getElementById('message');
 messageInput.addEventListener('input', () => {
   const message = messageInput.value;
-  const cleanMessage = checkSpam(message);
+  const cleanMessage = message;
   messageInput.value = cleanMessage;
 });
 
-function addComment() {
+submitButton.addEventListener('click', () => {
   const name = transformName(document.getElementById('name').value.trim());
-  const avatarUrl = document.getElementById('avatar').value.trim() || defaultAvatars[Math.floor(Math.random() * defaultAvatars.length)];
-  const message = checkSpam(document.getElementById('message').value.trim());
+  if (!name) {
+    alert('Fill the fields!');
+  } else {
+    console.log(name);
+    let avatarUrl = document.getElementById('avatar').value.trim() || defaultAvatars[Math.floor(Math.random() * defaultAvatars.length)];
+    let message = checkSpam(document.getElementById('message').value.trim());
 
-  if (!name || !message) {
-    alert('Заполните все поля');
-    return;
-  };
-  
-  const commentBox = document.createElement('div');
-  const img = document.createElement('img');
-  const commentInfo = document.createElement('div');
-  const commentHeader = document.createElement('h3');
-  const commentBody = document.createElement('p');
-  const commentDate = document.createElement('span');
-  
-  commentBox.classList.add('comment-box');
-  img.setAttribute('src', avatarUrl);
-  img.setAttribute('alt', name);
-  img.classList.add('comment-avatar');
-  commentInfo.classList.add('comment-info');
-  commentHeader.classList.add('comment-header');
-  commentBody.classList.add('comment-body');
-  commentDate.classList.add('comment-date');
-  
-  commentHeader.textContent = name;
-  commentBody.textContent = message;
-  commentDate.textContent = getFormattedDate();
-  
-  commentBox.appendChild(img);
-  commentInfo.appendChild(commentHeader);
-  commentInfo.appendChild(commentBody);
-  commentBox.appendChild(commentInfo);
-  commentBox.appendChild(commentDate);
-  
-  const commentsContainer = document.getElementById('comments-container');
-  commentsContainer.appendChild(commentBox);
-  
-  document.getElementById('name').value = '';
-  document.getElementById('avatar').value = '';
-  document.getElementById('message').value = '';
+    if (!name || !message) {
+      alert('Заполните все поля');
+      return;
+    };
 
-  function getFormattedDate() {
-    const date = new Date();
-    const day = date.getDate();
-    const month = date.getMonth() + 1;
-    const year = date.getFullYear();
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    return `${day}.${month}.${year} ${hours}:${minutes}`;
+    const commentBox = document.createElement('div');
+    const img = document.createElement('img');
+    const commentInfo = document.createElement('div');
+    const commentHeader = document.createElement('h3');
+    const commentBody = document.createElement('p');
+    const commentDate = document.createElement('span');
+
+    commentBox.classList.add('comment-box');
+    img.setAttribute('src', avatarUrl);
+    img.setAttribute('alt', name);
+    img.classList.add('comment-avatar');
+    commentInfo.classList.add('comment-info');
+    commentHeader.classList.add('comment-header');
+    commentBody.classList.add('comment-body');
+    commentDate.classList.add('comment-date');
+
+    commentHeader.textContent = name;
+    commentBody.textContent = message;
+    commentDate.textContent = getFormattedDate();
+
+    commentBox.appendChild(img);
+    commentInfo.appendChild(commentHeader);
+    commentInfo.appendChild(commentBody);
+    commentBox.appendChild(commentInfo);
+    commentBox.appendChild(commentDate);
+
+    const commentsContainer = document.getElementById('comments-container');
+    commentsContainer.appendChild(commentBox);
+
+    document.getElementById('name').value = '';
+    document.getElementById('avatar').value = '';
+    document.getElementById('message').value = '';
   }
-};
+});
+
+function getFormattedDate() {
+  const date = new Date();
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  return `${day}.${month}.${year} ${hours}:${minutes}`;
+}
 
 const defaultAvatars = [
   'https://example.com/avatar1.jpg',
@@ -83,18 +89,19 @@ const defaultAvatars = [
   'https://example.com/avatar5.jpg',
 ];
 
-let avatarUrl = document.getElementById('avatar').value.trim() || defaultAvatars[Math.floor(Math.random() * defaultAvatars.length)];
+// let avatarUrl = document.getElementById('avatar').value.trim() || defaultAvatars[Math.floor(Math.random() * defaultAvatars.length)];
 
-  const message = document.getElementById('message').value.trim();
+  // const message = document.getElementById('message').value.trim();
+  // console.log(message);
 
-  if (!message) {
-    alert('Заполните все поля');
-    return;
-  };
+  // if (!message) {
+  //   alert('Заполните все поля');
+  //   return;
+  // };
   
-let avatarUrl = document.getElementById('avatar').value.trim();
-if (!avatarUrl) {
-  avatarUrl = defaultAvatars[Math.floor(Math.random() * defaultAvatars.length)];
-};
+// let avatarUrl = document.getElementById('avatar').value.trim();
+// if (!avatarUrl) {
+//   avatarUrl = defaultAvatars[Math.floor(Math.random() * defaultAvatars.length)];
+// };
 
 
